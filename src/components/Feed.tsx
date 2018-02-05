@@ -50,7 +50,7 @@ class Feed extends React.Component<any, any> {
     return (
       <div className="feed">
         {linksToRender.map((link: Link, index: string) => (
-          <FeedItem key={link.id} />
+          <FeedItem key={link.id} index={index} link={link} />
         ))}
       </div>
     );

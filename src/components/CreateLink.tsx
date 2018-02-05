@@ -22,7 +22,7 @@ class CreateLink extends React.Component<any, any> {
   render() {
     return (
       <div className="form">
-        <label className="field">
+        <label className="field field--25">
           <span className="field__label">Title</span>
           <input
             className="field__input field__input--text"
@@ -32,7 +32,7 @@ class CreateLink extends React.Component<any, any> {
             placeholder=""
           />
         </label>
-        <label className="field">
+        <label className="field field--75">
           <span className="field__label">URL</span>
           <input
             className="field__input field__input--text"

@@ -4,18 +4,27 @@ import { withRouter } from 'react-router';
 
 import { AUTH_TOKEN } from '../constants';
 
-class Header extends React.Component {
+interface Props {
+  history: [string];
+}
+
+class Header extends React.Component<Props> {
+  logout() {
+    localStorage.removeItem(AUTH_TOKEN);
+    this.props.history.push(`/`);
+  }
+
   render() {
     const authToken = localStorage.getItem(AUTH_TOKEN);
     return (
       <header className="header">
-        <h1 className="header__title">GraphQL Hackernews Clone</h1>
+        <h1 className="header__title">Hackernews Clone</h1>
         <Link to="/" className="header__link">Feed</Link>
         {authToken && (
             <Link to="/create" className="header__link">Submit</Link>
         )}
         {authToken ? (
-            <Link to="/login" className="header__link">Logout</Link>
+            <Link to="/" onClick={this.logout} className="header__link">Logout</Link>
         ) : (
             <Link to="/login" className="header__link">Login</Link>
         )}
