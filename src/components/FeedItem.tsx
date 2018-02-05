@@ -61,8 +61,8 @@ class FeedItem extends React.Component<any, any> {
       variables: {
         linkId,
       },
-      update: (store: any, { data: { vote: any } }) => {
-        this.props.updateStoreAfterVote(store, vote, linkId);
+      update: (store: any, opt = { data: { vote } }) => {
+        this.props.updateStoreAfterVote(store, opt.data.vote, linkId);
       },
     });
   }

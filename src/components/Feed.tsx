@@ -50,22 +50,17 @@ class Feed extends React.Component<any, any> {
     return (
       <div className="feed">
         {linksToRender.map((link: Link, index: string) => (
-          <FeedItem key={link.id} index={index} link={link} />
+          <FeedItem key={link.id} />
         ))}
       </div>
     );
   }
 
   _updateCacheAfterVote = (store: any, createVote: any, linkId: any) => {
-    // 1
-    const data = store.readQuery({ query: FEED_QUERY })
-  
-    // 2
-    const votedLink = data.feed.links.find(link => link.id === linkId)
-    votedLink.votes = createVote.link.votes
-  
-    // 3
-    store.writeQuery({ query: FEED_QUERY, data })
+    const data = store.readQuery({ query: FEED_QUERY });
+    const votedLink = data.feed.links.find((link: Link) => link.id === linkId);
+    votedLink.votes = createVote.link.votes;
+    store.writeQuery({ query: FEED_QUERY, data });
   }
 }
 
